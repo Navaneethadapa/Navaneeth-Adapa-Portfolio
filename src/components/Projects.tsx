@@ -210,6 +210,10 @@ const Projects = () => {
             <span className="text-sm">Code</span>
           </button>
           <button className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
+            <ExternalLink size={16} />
+            <span className="text-sm">Live</span>
+          </button>
+          <button className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors">
             <Play size={16} />
             <span className="text-sm">Demo</span>
           </button>
