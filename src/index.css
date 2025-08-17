@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Dark Theme Base */
+    --background: 220 13% 9%;
+    --foreground: 210 40% 98%;
+
+    /* Cards & Surfaces */
+    --card: 220 13% 11%;
+    --card-foreground: 210 40% 98%;
+    --glass: 220 13% 15%;
+
+    /* Neon Colors */
+    --neon-cyan: 210 100% 60%;
+    --neon-purple: 210 100% 60%;
+    --neon-pink: 43 100% 65%;
+    --neon-blue: 210 100% 60%;
+    --neon-green: 160 84% 45%;
+
+    /* Primary Theme - Deep Professional Blue */
+    --primary: 210 100% 60%;
+    --primary-foreground: 220 13% 9%;
+    --primary-glow: 210 100% 60%;
+
+    /* Secondary - Modern Emerald Teal */
+    --secondary: 160 84% 45%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent - Premium Gold */
+    --accent: 43 100% 65%;
+    --accent-foreground: 220 13% 9%;
+
+    /* Muted */
+    --muted: 220 13% 15%;
+    --muted-foreground: 217 10% 64%;
+
+    /* Borders & Inputs */
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 210 100% 60%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 60%), hsl(160 84% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(160 84% 45%), hsl(43 100% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(43 100% 65%), hsl(210 100% 60%));
+    --gradient-glow: linear-gradient(135deg, hsl(210 100% 60% / 0.1), hsl(160 84% 45% / 0.1));
+
+    /* Shadows */
+    --shadow-neon: 0 0 20px hsl(var(--primary) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-intense: 0 0 60px hsl(var(--primary) / 0.7);
+
+    /* Animation Variables */
+    --animate-duration: 0.3s;
+    --animate-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass morphism */
+  .glass {
+    @apply bg-glass/40 backdrop-blur-md border border-white/10;
+  }
+
+  .glass-intense {
+    @apply bg-glass/60 backdrop-blur-lg border border-white/20;
+  }
+
+  /* Neon effects */
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 5px hsl(var(--primary) / 0.4), 0 0 10px hsl(var(--primary) / 0.2);
+  }
+
+  .neon-text-strong {
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.6), 0 0 20px hsl(var(--primary) / 0.4);
+  }
+
+  /* Header animations */
+  .header-text {
+    animation: fadeInGlow 1s ease-out;
+  }
+
+  /* Footer animations */
+  .footer-slide-up {
+    animation: slideUpFade 0.8s ease-out;
+  }
+
+  /* Typing animation */
+  .typing-container {
+    display: inline-block;
+    position: relative;
+  }
+
+  .typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid hsl(var(--primary));
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+        /* Scribbling Animations */
+        .animate-draw-1 {
+          stroke-dasharray: 200;
+          stroke-dashoffset: 200;
+          animation: draw 3s ease-in-out infinite;
+        }
+
+        .animate-draw-2 {
+          stroke-dasharray: 200;
+          stroke-dashoffset: 200;
+          animation: draw 3s ease-in-out infinite;
+          animation-delay: 0.5s;
+        }
+
+        .animate-draw-3 {
+          stroke-dasharray: 200;
+          stroke-dashoffset: 200;
+          animation: draw 3s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+
+        .animate-draw-circle {
+          stroke-dasharray: 125;
+          stroke-dashoffset: 125;
+          animation: draw 3s ease-in-out infinite;
+          animation-delay: 1.5s;
+        }
+
+        @keyframes draw {
+          0% {
+            stroke-dashoffset: 200;
+          }
+          50% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: -200;
+          }
+        }
+
+  .bg-gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  /* Animated elements */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 ease-out hover:shadow-[0_0_30px_hsl(var(--primary)/0.5)];
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-move 3s ease infinite;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+}
+
+@layer utilities {
+  /* Animation keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes pulse-glow {
+    0% { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
+    100% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
+  }
+
+  @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeInGlow {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+      text-shadow: none;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      text-shadow: 0 0 5px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  @keyframes slideUpFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--primary)); }
+  }
+
+  @keyframes gradient-shift {
+    0% { 
+      background-position: 0% 50%;
+      filter: hue-rotate(0deg) brightness(1);
+    }
+    25% { 
+      background-position: 100% 50%;
+      filter: hue-rotate(90deg) brightness(1.2);
+    }
+    50% { 
+      background-position: 200% 50%;
+      filter: hue-rotate(180deg) brightness(1.1);
+    }
+    75% { 
+      background-position: 300% 50%;
+      filter: hue-rotate(270deg) brightness(1.3);
+    }
+    100% { 
+      background-position: 400% 50%;
+      filter: hue-rotate(360deg) brightness(1);
+    }
+  }
+
+  .animate-typewriter {
+    animation: typewriter 2s steps(40, end), blink 0.5s step-end infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch 0.3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
+  }
+
+  .animate-gradient-shift {
+    animation: gradient-shift 4s ease-in-out infinite;
+  }
+
+  .bg-300% {
+    background-size: 300% 300%;
+  }
+}
